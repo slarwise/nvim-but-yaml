@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/slarwise/nvim-yaml/nvim-schema.json",
+  "title": "Neovim Configuration",
+  "description": "Neovim configuration",
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": "object",
+      "properties": {
+        "shiftwidth": {
+          "type": "integer"
+        },
+        "background": {
+          "enum": ["dark", "light"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
