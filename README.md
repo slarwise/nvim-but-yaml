@@ -2,6 +2,12 @@
 
 Configure neovim using yaml.
 
+## Dependencies
+
+- yajsv
+- lua
+- lua-yaml
+
 ## Features
 
 - [ ] Validate against json schema
