@@ -1,9 +1,0 @@
-options:
-  shiftwidth: 4
-  background: dark
-mappings:
-  normal:
-    <c-j>: <cmd>cnext<cr>
-golang:
-  options:
-    softtabstop: 4
