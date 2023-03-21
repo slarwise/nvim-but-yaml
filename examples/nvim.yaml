@@ -1,0 +1,124 @@
+options:
+  expandtab: true
+  softtabstop: 4
+  shiftwidth: 4
+  shiftround: true
+  clipboard: unnamedplus
+  textwidth: 80
+  linebreak: true
+  breakindent: true
+  ignorecase: true
+  smartcase: true
+  hlsearch: false
+  foldlevel: 99
+  foldopen: hor,mark,percent,quickfix
+  foldmethod: marker
+  shortmess: filnxtToOFI
+  completeopt: menu,menuone
+  splitbelow: true
+  splitright: true
+  list: true
+  wildcharm: 9 # Corresponds to <Tab>. ('\t'):byte()
+  timeoutlen: 500
+  mouse: ""
+  termguicolors: true
+colorscheme: base16-tomorrow-night-eighties
+mappings:
+  normal:
+    <C-J>: <Cmd>cnext<CR>
+    <C-K>: <Cmd>cprevious<CR>
+    <C-N>: <Cmd>cnfile<CR>
+    <C-P>: <Cmd>cpfile<CR>
+    m<C-M>: <Cmd>update<bar>make<CR>
+    sf: <Cmd>Telescope find_files<CR>
+    sg: <Cmd>Telescope live_grep<CR>
+    sd: <Cmd>Telescope lsp_document_symbols<CR>
+    so: <cmd>lua require'telescope.builtin'.oldfiles(require'telescope.themes'.get_dropdown{ previewer = false })<CR>
+    sl: <Cmd>Telescope lsp_dynamic_workspace_symbols<CR>
+    se: <Cmd>Telescope diagnostics bufnr=0<CR>
+    sE: <Cmd>lua vim.diagnostic.setqflist()<cr>
+    <space>: <cmd>lua require'lists'.select_arg()<cr>
+    sa: <cmd>lua require'lists'.select_arg()<cr>
+    sw: <cmd>lua require'lists'.select_cwd()<cr>
+    sW: <cmd>lua require'lists'.cwd_to_quickfix()<cr>
+    s<C-W>: <cmd>lua require'lists'.cwd_to_args()<cr>
+    sb: <cmd>lua require'lists'.select_buf_dir()<cr>
+    sB: <cmd>lua require'lists'.buf_dir_to_quickfix()<cr>
+    s<C-B>: <cmd>lua require'lists'.buf_dir_to_args()<cr>
+    sh: <cmd>Telescope harpoon marks<cr>
+    st: <cmd>edit ~/todo.md<cr>
+    sT: <cmd>split ~/todo.md<cr>
+    s<C-T>: <cmd>vsplit ~/todo.md<cr>
+  command:
+    <C-K>: <Up>
+    <C-J>: <Down>
+    <C-L>:
+      expr: true
+      callback: return vim.fn.wildmenumode() == 1 and "<Down><Tab>" or "<C-l>"
+    <C-H>:
+      expr: true
+      callback: return vim.fn.wildmenumode() == 1 and "<Up><Tab>" or "<C-h>"
+  terminal:
+    <C-/>: <C-\><C-N>
+autocmds:
+  BufWritePost:
+    pattern: $MYVIMRC
+    command: source <afile>
+  VimResized:
+    command: wincmd =
+  TextYankPost:
+    command: silent! lua vim.highlight.on_yank()
+  TermOpen:
+    command: startinsert
+  BufReadPost:
+    command: if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"" | endif
+  VimEnter:
+    command: setlocal cursorline
+  WinEnter:
+    command: setlocal cursorline
+  BufWinEnter:
+    command: setlocal cursorline
+  WinLeave:
+    command: setlocal nocursorline
+  QuitPre:
+    command: if winnr("$") == 1 | blast | end
+commands:
+  LspCodeAction: vim.lsp.buf.code_action()
+language_server:
+  mappings:
+    normal:
+      gd: <Cmd>lua vim.lsp.buf.definition()<CR>
+      <C-W>d: <Cmd>lua require'telescope.builtin'.lsp_definitions { jump_type = 'split' }<CR>
+      <C-W><C-D>: <Cmd>lua require'telescope.builtin'.lsp_definitions { jump_type = 'vsplit' }<CR>
+      K: <Cmd>lua vim.lsp.buf.hover()<CR>
+      ",a": <cmd>lua vim.lsp.buf.code_action()<CR>
+      ",r": <cmd>lua vim.lsp.buf.references()<CR>
+      ",d": <cmd>lua vim.lsp.diagnostic.set_qflist()<CR>
+      ",f": <cmd>lua vim.lsp.buf.formatting()<CR>
+      ",n": <cmd>lua vim.lsp.buf.rename()<CR>
+      ",e": <cmd>lua vim.diagnostic.open_float()<CR>
+diagnostics:
+  signs: false
+syntax:
+  highlight_links:
+    LspCodeLens: Comment
+    LspCodeLensSeparator: Comment
+filetypes:
+  golang:
+    options:
+      expandtab: false
+      tabstop: 4
+  json:
+    options:
+      shiftwidth: 2
+  javascript:
+    options:
+      shiftwidth: 2
+      makeprg: npm
+  typescript:
+    options:
+      shiftwidth: 2
+  vim:
+    options:
+      foldmethod: syntax
+      iskeyword: "@,48-57,_,192-255"

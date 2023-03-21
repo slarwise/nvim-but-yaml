@@ -1,0 +1,892 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Neovim Configuration
+description: Neovim configuration
+type: object
+properties:
+  options:
+    $ref: "#/$defs/options"
+  colorscheme:
+    type: string
+  mappings:
+    $ref: "#/$defs/mappings"
+  autocmds:
+    type: object
+  commands:
+    type: object
+  language_server:
+    type: object
+    properties:
+      mappings:
+        $ref: "#/$defs/mappings"
+    additionalProperties: false
+  diagnostics:
+    type: object
+    properties:
+      underline:
+        oneOf:
+          - type: boolean
+          - type: object
+            properties:
+              severity:
+                type: string
+      virtual_text:
+        oneOf:
+          - type: boolean
+          - type: object
+            properties:
+              severity:
+                type: string
+              source:
+                type: boolean
+              spacing:
+                type: integer
+              prefix:
+                type: string
+              format:
+                type: string
+      signs:
+        oneOf:
+          - type: boolean
+          - type: object
+            properties:
+              severity:
+                type: string
+              priority:
+                type: integer
+      float:
+        oneOf:
+          - type: boolean
+          - type: object
+      update_in_insert:
+        type: boolean
+      severity_sort:
+        type: boolean
+    additionalProperties: false
+  filetypes:
+    type: object
+    additionalProperties:
+      properties:
+        options:
+          $ref: "#/$defs/options"
+      additionalProperties: false
+
+$defs:
+  mappings:
+    type: object
+    properties:
+      normal:
+        type: object
+      command:
+        type: object
+      terminal:
+        type: object
+    additionalProperties: false
+  options:
+    type: object
+    properties:
+      aleph:
+        type: integer
+      allowrevins:
+        type: boolean
+      ambiwidth:
+        enum:
+          - single
+          - double
+      autochdir:
+        type: boolean
+      arabic:
+        type: boolean
+      arabicshape:
+        type: boolean
+      autoindent:
+        type: boolean
+      autoread:
+        type: boolean
+      autowrite:
+        type: boolean
+      autowriteall:
+        type: boolean
+      background:
+        enum:
+          - dark
+          - light
+      backspace:
+        type: string
+      backup:
+        type: boolean
+      backupcopy:
+        enum:
+          - yes
+          - no
+          - auto
+      backupdir:
+        type: string
+      backupext:
+        type: string
+      backupskip:
+        type: string
+      belloff:
+        type: string
+      binary:
+        type: boolean
+      bomb:
+        type: boolean
+      breakat:
+        type: string
+      breakindent:
+        type: boolean
+      breakindentopt:
+        type: string
+      browsedir:
+        type: string
+      bufhidden:
+        enum:
+          - ""
+          - hide
+          - unload
+          - delete
+          - wipe
+      buflisted:
+        type: boolean
+      buftype:
+        enum:
+          - ""
+          - acwrite
+          - help
+          - nofile
+          - nowrite
+          - quickfix
+          - terminal
+          - prompt
+      casemap:
+        enum:
+          - internal
+          - keepascii
+          - "internal,keepascii"
+      cdhome:
+        type: boolean
+      cdpath:
+        type: string
+      cedit:
+        type: string
+      channel:
+        type: integer
+      charconvert:
+        type: string
+      cindent:
+        type: boolean
+      cinkeys:
+        type: string
+      cinoptions:
+        type: string
+      cinwords:
+        type: string
+      cinscopedecls:
+        type: string
+      clipboard:
+        enum:
+          - unnamed
+          - unnamedplus
+      cmdheight:
+        type: integer
+      cmdwinheight:
+        type: integer
+      colorcolumn:
+        type: string
+      columns:
+        type: integer
+      comments:
+        type: string
+      commentstring:
+        type: string
+      complete:
+        type: string
+      completefunc:
+        type: string
+      completeslash:
+        type: string
+      completeopt:
+        type: string
+      concealcursor:
+        type: string
+      conceallevel:
+        type: integer
+      confirm:
+        type: boolean
+      copyindent:
+        type: boolean
+      cpoptions:
+        type: string
+      cscopepathcomp:
+        type: integer
+      cscopeprg:
+        type: string
+      cscopequickfix:
+        type: string
+      cscoperelative:
+        type: boolean
+      cscopetag:
+        type: boolean
+      cscopetagorder:
+        type: integer
+      cursorbind:
+        type: boolean
+      cursorcolumn:
+        type: boolean
+      cursorline:
+        type: boolean
+      cursorlineopt:
+        type: string
+      debug:
+        type: string
+      define:
+        type: string
+      delcombine:
+        type: boolean
+      dictionary:
+        type: string
+      diff:
+        type: boolean
+      diffexpr:
+        type: string
+      diffopt:
+        type: string
+      digraph:
+        type: boolean
+      directory:
+        type: string
+      display:
+        type: string
+      eadirection:
+        enum:
+          - ver
+          - hor
+          - both
+      encoding:
+        type: string
+      endofline:
+        type: boolean
+      equalalways:
+        type: boolean
+      equalprg:
+        type: string
+      errorbells:
+        type: boolean
+      errorfile:
+        type: string
+      errorformat:
+        type: string
+      eventignore:
+        type: string
+      expandtab:
+        type: boolean
+      fileencoding:
+        type: string
+      fileencodings:
+        type: string
+      fileformat:
+        type: string
+      fileformats:
+        type: string
+      fileignorecase:
+        type: boolean
+      filetype:
+        type: string
+      fillchars:
+        type: string
+      fixendofline:
+        type: boolean
+      foldclose:
+        type: string
+      foldcolumn:
+        enum:
+          - auto
+          - auto:1
+          - auto:2
+          - auto:3
+          - auto:4
+          - auto:5
+          - auto:6
+          - auto:7
+          - auto:8
+          - auto:9
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+      foldenable:
+        type: boolean
+      foldexpr:
+        type: string
+      foldignore:
+        type: string
+      foldlevel:
+        type: integer
+      foldlevelstart:
+        type: integer
+      foldmarker:
+        type: string
+      foldmethod:
+        enum:
+          - manual
+          - indent
+          - expr
+          - marker
+          - syntax
+          - diff
+      foldminlines:
+        type: integer
+      foldnestmax:
+        type: integer
+      foldopen:
+        type: string
+      foldtext:
+        type: string
+      formatexpr:
+        type: string
+      formatlistpat:
+        type: string
+      formatoptions:
+        type: string
+      formatprg:
+        type: string
+      fsync:
+        type: boolean
+      gdefault:
+        type: boolean
+      grepformat:
+        type: string
+      grepprg:
+        type: string
+      guicursor:
+        type: string
+      guifont:
+        type: string
+      guifontwide:
+        type: string
+      guioptions:
+        type: string
+      guitablabel:
+        type: string
+      guitabtooltip:
+        type: string
+      helpfile:
+        type: string
+      helpheight:
+        type: integer
+      helplang:
+        type: string
+      hidden:
+        type: boolean
+      history:
+        type: integer
+      hkmap:
+        type: boolean
+      hkmapp:
+        type: boolean
+      hlsearch:
+        type: boolean
+      icon:
+        type: boolean
+      iconstring:
+        type: string
+      ignorecase:
+        type: boolean
+      imcmdline:
+        type: boolean
+      imdisable:
+        type: boolean
+      iminsert:
+        type: integer
+      imsearch:
+        type: integer
+      inccommand:
+        enum:
+          - nosplit
+          - split
+      include:
+        type: string
+      includeexpr:
+        type: string
+      incsearch:
+        type: boolean
+      indentexpr:
+        type: string
+      indentkeys:
+        type: string
+      infercase:
+        type: boolean
+      isfname:
+        type: string
+      isident:
+        type: string
+      iskeyword:
+        type: string
+      isprint:
+        type: string
+      jumpoptions:
+        enum:
+          - ""
+          - stack
+          - view
+          - "stack,view"
+      joinspaces:
+        type: boolean
+      keymap:
+        type: string
+      keymodel:
+        type: string
+      keywordprg:
+        type: string
+      langmap:
+        type: string
+      langmenu:
+        type: string
+      langremap:
+        type: boolean
+      laststatus:
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      lazyredraw:
+        type: boolean
+      linebreak:
+        type: boolean
+      lines:
+        type: integer
+      linespace:
+        type: integer
+      lisp:
+        type: boolean
+      lispwords:
+        type: string
+      list:
+        type: boolean
+      listchars:
+        type: string
+      loadplugins:
+        type: boolean
+      magic:
+        type: boolean
+      makeef:
+        type: string
+      makeencoding:
+        type: string
+      makeprg:
+        type: string
+      matchpairs:
+        type: string
+      matchtime:
+        type: integer
+      maxfuncdepth:
+        type: integer
+      maxmapdepth:
+        type: integer
+      maxmempattern:
+        type: integer
+      menuitems:
+        type: integer
+      mkspellmem:
+        type: string
+      modeline:
+        type: boolean
+      modelineexpr:
+        type: boolean
+      modelines:
+        type: integer
+      modifiable:
+        type: boolean
+      modified:
+        type: boolean
+      more:
+        type: boolean
+      mouse:
+        type: string
+      mousefocus:
+        type: boolean
+      mousehide:
+        type: boolean
+      mousemodel:
+        type: string
+      mousemoveevent:
+        type: boolean
+      mousescroll:
+        type: string
+      mouseshape:
+        type: string
+      mousetime:
+        type: integer
+      nrformats:
+        type: string
+      number:
+        type: boolean
+      numberwidth:
+        type: integer
+      omnifunc:
+        type: string
+      opendevice:
+        type: boolean
+      operatorfunc:
+        type: string
+      packpath:
+        type: string
+      paragraphs:
+        type: string
+      paste:
+        type: boolean
+      pastetoggle:
+        type: string
+      patchexpr:
+        type: string
+      patchmode:
+        type: string
+      path:
+        type: string
+      preserveindent:
+        type: boolean
+      previewheight:
+        type: integer
+      previewpopup:
+        type: boolean
+      previewwindow:
+        type: boolean
+      printdevice:
+        type: string
+      printencoding:
+        type: string
+      printexpr:
+        type: string
+      printfont:
+        type: string
+      printheader:
+        type: string
+      printmbcharset:
+        type: string
+      printmbfont:
+        type: string
+      printoptions:
+        type: string
+      pumblend:
+        type: integer
+      pumheight:
+        type: integer
+      pumwidth:
+        type: integer
+      pyxversion:
+        type: integer
+      quickfixtextfunc:
+        type: string
+      quoteescape:
+        type: string
+      readonly:
+        type: boolean
+      redrawdebug:
+        type: string
+      redrawtime:
+        type: integer
+      regexpengine:
+        enum:
+          - 0
+          - 1
+          - 2
+      relativenumber:
+        type: boolean
+      report:
+        type: integer
+      revins:
+        type: boolean
+      rightleft:
+        type: boolean
+      rightleftcmd:
+        type: string
+      ruler:
+        type: boolean
+      rulerformat:
+        type: string
+      runtimepath:
+        type: string
+      scroll:
+        type: integer
+      scrollback:
+        type: integer
+      scrollbind:
+        type: boolean
+      scrolljump:
+        type: integer
+      scrolloff:
+        type: integer
+      scrollopt:
+        type: string
+      sections:
+        type: string
+      secure:
+        type: boolean
+      selection:
+        enum:
+          - old
+          - inclusive
+          - exclusive
+      selectmode:
+        type: string
+      sessionoptions:
+        type: string
+      shada:
+        type: string
+      shadafile:
+        type: string
+      shell:
+        type: string
+      shellcmdflag:
+        type: string
+      shellpipe:
+        type: string
+      shellquote:
+        type: string
+      shellredir:
+        type: string
+      shellslash:
+        type: boolean
+      shelltemp:
+        type: boolean
+      shellxescape:
+        type: string
+      shellxquote:
+        type: string
+      shiftround:
+        type: boolean
+      shiftwidth:
+        type: integer
+      shortmess:
+        type: string
+      showbreak:
+        type: string
+      showcmd:
+        type: boolean
+      showfulltag:
+        type: boolean
+      showmatch:
+        type: boolean
+      showmode:
+        type: boolean
+      showtabline:
+        enum:
+          - 0
+          - 1
+          - 2
+      sidescroll:
+        type: integer
+      sidescrolloff:
+        type: integer
+      signcolumn:
+        enum:
+          - auto
+          - auto:1
+          - auto:2
+          - auto:3
+          - auto:4
+          - auto:5
+          - auto:6
+          - auto:7
+          - auto:8
+          - auto:9
+          - no
+          - yes
+          - yes:1
+          - yes:2
+          - yes:3
+          - yes:4
+          - yes:5
+          - yes:6
+          - yes:7
+          - yes:8
+          - yes:9
+          - number
+      smartcase:
+        type: boolean
+      smartindent:
+        type: boolean
+      smarttab:
+        type: boolean
+      softtabstop:
+        type: integer
+      spell:
+        type: boolean
+      spellcapcheck:
+        type: string
+      spellfile:
+        type: string
+      spelllang:
+        type: string
+      spelloptions:
+        type: string
+      spellsuggest:
+        type: string
+      splitbelow:
+        type: boolean
+      splitright:
+        type: boolean
+      startofline:
+        type: boolean
+      statusline:
+        type: string
+      suffixes:
+        type: string
+      suffixesadd:
+        type: string
+      swapfile:
+        type: boolean
+      switchbuf:
+        type: string
+      synmaxcol:
+        type: string
+      syntax:
+        type: string
+      tabline:
+        type: string
+      tabpagemax:
+        type: integer
+      tabstop:
+        type: integer
+      tagbsearch:
+        type: boolean
+      tagcase:
+        enum:
+          - followic
+          - followscs
+          - ignore
+          - match
+          - smart
+      tagfunc:
+        type: string
+      taglength:
+        type: integer
+      tagrelative:
+        type: boolean
+      tags:
+        type: string
+      tagstack:
+        type: boolean
+      termbidi:
+        type: boolean
+      termguicolors:
+        type: boolean
+      termpastefilter:
+        type: string
+      textwidth:
+        type: integer
+      thesaurus:
+        type: string
+      thesaurusfunc:
+        type: string
+      tildeop:
+        type: boolean
+      ttimeout:
+        type: boolean
+      timeout:
+        type: boolean
+      timeoutlen:
+        type: integer
+      ttimeoutlen:
+        type: integer
+      title:
+        type: boolean
+      titlelen:
+        type: integer
+      titleold:
+        type: string
+      titlestring:
+        type: string
+      undodir:
+        type: string
+      undofile:
+        type: boolean
+      undolevels:
+        type: integer
+      undoreload:
+        type: integer
+      updatecount:
+        type: integer
+      updatetime:
+        type: integer
+      varsofttabstop:
+        type: string
+      vartabstop:
+        type: string
+      verbose:
+        type: integer
+      verbosefile:
+        type: string
+      viewdir:
+        type: string
+      viewoptions:
+        type: string
+      virtualedit:
+        type: string
+      visualbell:
+        type: boolean
+      warn:
+        type: boolean
+      whichwrap:
+        type: string
+      wildchar:
+        type: integer
+      wildcharm:
+        type: integer
+      wildignore:
+        type: string
+      wildignorecase:
+        type: boolean
+      wildmenu:
+        type: boolean
+      wildmode:
+        type: string
+      wildoptions:
+        type: string
+      winaltkeys:
+        enum:
+          - no
+          - yes
+          - menu
+      winbar:
+        type: string
+      windblend:
+        type: integer
+      window:
+        type: integer
+      winheight:
+        type: integer
+      winhighlight:
+        type: string
+      winfixheight:
+        type: boolean
+      winfixwidth:
+        type: boolean
+      winminheight:
+        type: integer
+      winminwidth:
+        type: integer
+      winwidth:
+        type: integer
+      wrap:
+        type: boolean
+      wrapmargin:
+        type: integer
+      wrapscan:
+        type: boolean
+      write:
+        type: boolean
+      writeany:
+        type: boolean
+      writebackup:
+        type: boolean
+      writedelay:
+        type: integer
+    additionalProperties: false
