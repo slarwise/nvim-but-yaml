@@ -63,6 +63,22 @@ local set_highlight_link = function(from, to)
     vim.api.nvim_set_hl(0, from, { link = to })
 end
 
+local set_language_server_for_filetype = function(filetype, config)
+    local root_dir = vim.fs.dirname(vim.fs.find(config.root_dir.patterns, { upward = true })[1])
+    print(vim.inspect(config))
+    vim.api.nvim_create_autocmd('Filetype', {
+        pattern = filetype,
+        callback = function()
+            vim.lsp.start({
+                name = config.name,
+                cmd = config.cmd,
+                root_dir = root_dir,
+                settings = config.settings,
+            })
+        end
+    })
+end
+
 M.run = function(config_file_path)
     local config = read_config(config_file_path)
     if not config then return end
@@ -135,6 +151,9 @@ M.run = function(config_file_path)
                 for name, value in pairs(settings.options) do
                     set_filetype_option(filetype, name, value)
                 end
+            end
+            if settings.language_server then
+                set_language_server_for_filetype(filetype, settings.language_server)
             end
         end
     end
