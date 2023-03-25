@@ -46,7 +46,7 @@ require("nvim_but_yaml").run("./nvim.json")
 - [x] Filetype
   - [x] Options
   - [ ] Mappings
-  - [ ] Language server
+  - [x] Language server
   - [ ] Syntax
   - [ ] Indent
 - [ ] Plugins. I think we should skip this
