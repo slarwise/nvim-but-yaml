@@ -97,6 +97,9 @@ language_server:
       ",f": <cmd>lua vim.lsp.buf.formatting()<CR>
       ",n": <cmd>lua vim.lsp.buf.rename()<CR>
       ",e": <cmd>lua vim.diagnostic.open_float()<CR>
+  handlers:
+    textDocument/hover:
+      border: rounded
 diagnostics:
   signs: false
 syntax:

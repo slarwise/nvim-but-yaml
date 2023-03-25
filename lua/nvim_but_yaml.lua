@@ -65,7 +65,6 @@ end
 
 local set_language_server_for_filetype = function(filetype, config)
     local root_dir = vim.fs.dirname(vim.fs.find(config.root_dir.patterns, { upward = true })[1])
-    print(vim.inspect(config))
     vim.api.nvim_create_autocmd('Filetype', {
         pattern = filetype,
         callback = function()
