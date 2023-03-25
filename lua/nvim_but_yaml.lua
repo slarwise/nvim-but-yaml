@@ -48,6 +48,10 @@ local set_language_server_mapping = function(mode, lhs, rhs)
     })
 end
 
+local override_language_server_handler = function(handler, config)
+    vim.lsp.handlers[handler] = vim.lsp.with(vim.lsp.handlers[handler], config)
+end
+
 local set_filetype_option = function(filetype, name, value)
     vim.api.nvim_create_autocmd('Filetype', {
         pattern = filetype,
@@ -128,6 +132,11 @@ M.run = function(config_file_path)
                 for lhs, rhs in pairs(config.language_server.mappings.normal) do
                     set_language_server_mapping('n', lhs, rhs)
                 end
+            end
+        end
+        if config.language_server.handlers then
+            for handler, settings in pairs(config.language_server.handlers) do
+                override_language_server_handler(handler, settings)
             end
         end
     end
