@@ -128,6 +128,22 @@ filetypes:
   typescript:
     options:
       shiftwidth: 2
+    language_server:
+      name: tsserver
+      cmd:
+        - typescript-language-server
+        - --stdio
+      root_dir:
+        patterns:
+          - package.json
+          - tsconfig.json
+          - jsconfig.json
+          - .git
+      settings:
+        single_file_support: true
+        init_options:
+          hostInfo: neovim
+
   vim:
     options:
       foldmethod: syntax
