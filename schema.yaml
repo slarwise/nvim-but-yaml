@@ -68,6 +68,23 @@ properties:
       properties:
         options:
           $ref: "#/$defs/options"
+        language_server:
+          properties:
+            name:
+              type: string
+            cmd:
+              type: array
+              items:
+                type: string
+            root_dir:
+              properties:
+                patterns:
+                  type: array
+                  items:
+                    type: string
+            settings:
+              type: object
+          additionalProperties: false
       additionalProperties: false
 
 $defs:

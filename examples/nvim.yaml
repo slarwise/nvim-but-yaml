@@ -104,10 +104,20 @@ syntax:
     LspCodeLens: Comment
     LspCodeLensSeparator: Comment
 filetypes:
-  golang:
+  go:
     options:
       expandtab: false
       tabstop: 4
+    language_server:
+      name: gopls
+      cmd:
+        - gopls
+      root_dir:
+        patterns:
+          - go.mod
+          - .git
+      settings:
+        single_file_support: true
   json:
     options:
       shiftwidth: 2
