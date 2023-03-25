@@ -18,6 +18,9 @@ properties:
     properties:
       mappings:
         $ref: "#/$defs/mappings"
+      handlers:
+        additionalProperties:
+          type: object
     additionalProperties: false
   diagnostics:
     type: object
