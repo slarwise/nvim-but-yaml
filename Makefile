@@ -4,9 +4,8 @@ validate: convert
 
 .PHONY: convert
 convert:
-	cat examples/nvim.yaml | yq > examples/nvim.json
 	cat schema.yaml | yq > schema.json
 
 .PHONY: test
-test: convert
+test:
 	nvim -u examples/init.lua --cmd "set runtimepath^=."
