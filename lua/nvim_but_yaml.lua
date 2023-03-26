@@ -1,12 +1,11 @@
 local M = {}
 
 local read_config = function(config_path)
-    local file = assert(io.open(config_path, "rb"))
-    -- if not file then return end
-    local content = file:read "*a" -- *a or *all reads the whole file
-    file:close()
-    local config = vim.json.decode(content)
-    return config
+    assert(io.open(config_path, "r"))
+    local handle = io.popen(string.format("yq . %s", config_path))
+    local output = handle:read("*a")
+    handle:close()
+    return vim.json.decode(output)
 end
 
 local set_option = function(name, value)
