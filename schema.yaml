@@ -5,6 +5,8 @@ type: object
 properties:
   options:
     $ref: "#/$defs/options"
+  variables:
+    type: object
   colorscheme:
     type: string
   mappings:

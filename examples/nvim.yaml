@@ -22,6 +22,15 @@ options:
   timeoutlen: 500
   mouse: ""
   termguicolors: true
+variables:
+  tex_no_error: 1
+  tex_flavor: latex
+  tex_comment_nospell: 1
+  vimsyn_embed: l # Syntax highlighting for lua in vim files
+  markdown_fenced_languages:
+    - python
+    - vim
+    - lua
 colorscheme: base16-tomorrow-night-eighties
 mappings:
   normal:
