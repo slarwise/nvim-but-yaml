@@ -5,7 +5,7 @@ Configure neovim using yaml.
 ## Installation
 
 Clone this repo to somewhere under `:help packpath` or install using a package
-manager.
+manager. Then install [yq](https://github.com/mikefarah/yq).
 
 ## Usage
 
@@ -19,18 +19,11 @@ options:
   shiftwidth: 4
 ```
 
-Second, convert this document to json (uses
-[yq](https://github.com/mikefarah/yq)):
-
-```sh
-cat nvim.yaml | yq > nvim.json
-```
-
-Third, add the following to your `init.lua`:
+Then, add the following to your `init.lua`:
 
 ```lua
 -- init.lua
-require("nvim_but_yaml").run("./nvim.json")
+require("nvim_but_yaml").run("./nvim.yaml")
 ```
 
 ## Supported configuration
