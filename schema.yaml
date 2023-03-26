@@ -65,6 +65,10 @@ properties:
       severity_sort:
         type: boolean
     additionalProperties: false
+  syntax:
+    properties:
+      highlight_links:
+        type: object
   filetypes:
     type: object
     additionalProperties:
