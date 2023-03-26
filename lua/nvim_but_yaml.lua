@@ -94,7 +94,6 @@ M.run = function(config_file_path)
 
     if config.variables then
       for name, value in pairs(config.variables) do
-        print(name, vim.inspect(value))
         vim.g[name] = value
       end
     end
