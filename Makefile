@@ -9,4 +9,4 @@ convert:
 
 .PHONY: test
 test: convert
-	nvim -u examples/init.lua --cmd "set runtimepath+=."
+	nvim -u examples/init.lua --cmd "set runtimepath^=."
