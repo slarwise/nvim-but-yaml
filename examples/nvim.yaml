@@ -115,6 +115,12 @@ syntax:
   highlight_links:
     LspCodeLens: Comment
     LspCodeLensSeparator: Comment
+filetype_mappings:
+  extension:
+    tf: terraform
+  filename:
+    Tiltfile: python
+
 filetypes:
   go:
     options:

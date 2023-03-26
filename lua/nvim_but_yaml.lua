@@ -82,6 +82,10 @@ local set_language_server_for_filetype = function(filetype, config)
     })
 end
 
+local add_filetype_mappings = function(filetypes)
+  vim.filetype.add(filetypes)
+end
+
 M.run = function(config_file_path)
     local config = read_config(config_file_path)
     if not config then return end
@@ -170,6 +174,10 @@ M.run = function(config_file_path)
                 set_language_server_for_filetype(filetype, settings.language_server)
             end
         end
+    end
+
+    if config.filetype_mappings then
+      add_filetype_mappings(config.filetype_mappings)
     end
 end
 

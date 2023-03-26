@@ -95,6 +95,15 @@ properties:
               type: object
           additionalProperties: false
       additionalProperties: false
+  filetype_mappings:
+    properties:
+      extension:
+        type: object
+      filename:
+        type: object
+      pattern:
+        type: object
+    additionalProperties: false
 additionalProperties: false
 
 $defs:
