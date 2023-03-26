@@ -53,4 +53,4 @@ require("nvim_but_yaml").run("./nvim.json")
 
 ## Schema
 
-TODO, kind of a chore but might be worth it.
+Use [schema.yaml](./schema.yaml) to validate your configuration.
