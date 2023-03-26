@@ -93,6 +93,7 @@ properties:
               type: object
           additionalProperties: false
       additionalProperties: false
+additionalProperties: false
 
 $defs:
   mappings:
