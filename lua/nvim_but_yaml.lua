@@ -92,6 +92,13 @@ M.run = function(config_file_path)
         end
     end
 
+    if config.variables then
+      for name, value in pairs(config.variables) do
+        print(name, vim.inspect(value))
+        vim.g[name] = value
+      end
+    end
+
     if config.colorscheme then
         set_colorscheme(config.colorscheme)
     end

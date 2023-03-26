@@ -5,6 +5,8 @@ type: object
 properties:
   options:
     $ref: "#/$defs/options"
+  variables:
+    type: object
   colorscheme:
     type: string
   mappings:
@@ -65,6 +67,10 @@ properties:
       severity_sort:
         type: boolean
     additionalProperties: false
+  syntax:
+    properties:
+      highlight_links:
+        type: object
   filetypes:
     type: object
     additionalProperties:
@@ -89,6 +95,7 @@ properties:
               type: object
           additionalProperties: false
       additionalProperties: false
+additionalProperties: false
 
 $defs:
   mappings:
