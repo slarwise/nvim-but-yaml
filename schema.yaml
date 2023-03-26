@@ -93,6 +93,8 @@ properties:
                     type: string
             settings:
               type: object
+            server_capabilities:
+              type: object
           additionalProperties: false
       additionalProperties: false
   filetype_mappings:
