@@ -77,6 +77,9 @@ local set_language_server_for_filetype = function(filetype, config)
                 cmd = config.cmd,
                 root_dir = root_dir,
                 settings = config.settings,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities = vim.tbl_extend("force", client.server_capabilities, config.server_capabilities or {})
+                end,
             })
         end
     })
