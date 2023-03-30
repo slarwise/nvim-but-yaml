@@ -67,7 +67,7 @@ local set_highlight_link = function(from, to)
 end
 
 local set_language_server_for_filetype = function(filetype, config)
-    local root_dir = vim.fs.dirname(vim.fs.find(config.root_dir.patterns, { upward = true })[1])
+    local root_dir = vim.fs.dirname(vim.fs.find(config.root_dir.patterns, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1])
     vim.api.nvim_create_autocmd('Filetype', {
         pattern = filetype,
         callback = function()
