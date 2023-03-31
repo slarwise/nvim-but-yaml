@@ -82,3 +82,26 @@ Now your configuration in `nvim.yaml` will be applied on startup.
 ## Schema
 
 Use [schema.yaml](./schema.yaml) to validate your configuration.
+
+### Validate using CLI
+
+This example uses [yajsv](https://github.com/neilpa/yajsv) to validate the
+configuration file `nvim.yaml`.
+
+```sh
+curl https://raw.githubusercontent.com/slarwise/nvim-but-yaml/main/schema.yaml > schema.yaml
+yajsv -s schema.yaml nvim.yaml
+```
+
+### Validate in editor
+
+If you use the
+[yaml-language-server](https://github.com/redhat-developer/yaml-language-server#using-inlined-schema),
+it is possible to provide the schema in your configuration file, like this:
+
+```yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/slarwise/nvim-but-yaml/main/schema.yaml
+
+options:
+  background: dark
+```
