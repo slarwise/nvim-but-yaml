@@ -11,12 +11,45 @@ manager. Then install [yq](https://github.com/mikefarah/yq).
 
 First, create a yaml configuration file, which will look something like this
 (for a more detailed example, see `./examples/nvim.yaml`.
-Something like this:
 
 ```yaml
 # nvim.yaml
 options:
   shiftwidth: 4
+mappings:
+  normal:
+    <C-J>: <Cmd>cnext<CR>
+    <C-K>: <Cmd>cprevious<CR>
+autocmds:
+  TextYankPost:
+    command: silent! lua vim.highlight.on_yank()
+language_server:
+  mappings:
+    normal:
+      gd: <Cmd>lua vim.lsp.buf.definition()<CR>
+  handlers:
+    textDocument/hover:
+      border: rounded
+diagnostics:
+  signs: false
+filetype_mappings:
+  extension:
+    tf: terraform
+filetypes:
+  go:
+    options:
+      expandtab: false
+      tabstop: 4
+    language_server:
+      name: gopls
+      cmd:
+        - gopls
+      root_dir:
+        patterns:
+          - go.mod
+          - .git
+      settings:
+        single_file_support: true
 ```
 
 Then, add the following to your `init.lua`:
@@ -25,6 +58,8 @@ Then, add the following to your `init.lua`:
 -- init.lua
 require("nvim_but_yaml").run("./nvim.yaml")
 ```
+
+Now your configuration in `nvim.yaml` will be applied on startup.
 
 ## Supported configuration
 
