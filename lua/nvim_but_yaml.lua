@@ -88,7 +88,7 @@ local add_filetype_mappings = function(filetypes)
   vim.filetype.add(filetypes)
 end
 
-M.run = function(config_file_path)
+M.apply = function(config_file_path)
     local config = read_config(config_file_path)
     if not config then return end
 
