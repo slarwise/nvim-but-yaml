@@ -56,7 +56,7 @@ Then, add the following to your `init.lua`:
 
 ```lua
 -- init.lua
-require("nvim_but_yaml").run("./nvim.yaml")
+require("nvim_but_yaml").apply("./nvim.yaml")
 ```
 
 Now your configuration in `nvim.yaml` will be applied on startup.

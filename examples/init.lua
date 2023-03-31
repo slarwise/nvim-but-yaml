@@ -1,1 +1,1 @@
-require("nvim_but_yaml").run("./examples/nvim.yaml")
+require("nvim_but_yaml").apply("./examples/nvim.yaml")
