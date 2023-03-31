@@ -9,8 +9,8 @@ manager. Then install [yq](https://github.com/mikefarah/yq).
 
 ## Usage
 
-First, create a yaml configuration file, which will look something like this
-(for a more detailed example, see `./examples/nvim.yaml`.
+First, create a yaml configuration file, which will look something like this.
+For a more detailed example, see [./examples/nvim.yaml](./examples/nvim.yaml).
 
 ```yaml
 # nvim.yaml
