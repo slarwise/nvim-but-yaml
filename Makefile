@@ -1,10 +1,6 @@
 .PHONY: validate
-validate: convert
-	yajsv -s schema.json examples/nvim.yaml
-
-.PHONY: convert
-convert:
-	cat schema.yaml | yq > schema.json
+validate:
+	yajsv -s schema.yaml examples/nvim.yaml
 
 .PHONY: test
 test:
