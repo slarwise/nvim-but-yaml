@@ -2,7 +2,7 @@ local M = {}
 
 local read_config = function(config_path)
     assert(io.open(config_path, "r"))
-    local handle = io.popen(string.format("yq . %s", config_path))
+    local handle = io.popen(string.format("yq . %s --output-format json", config_path))
     local output = handle:read("*a")
     handle:close()
     return vim.json.decode(output)
