@@ -89,6 +89,11 @@ local add_filetype_mappings = function(filetypes)
 end
 
 M.apply = function(config_file_path)
+    if vim.fn.executable("yq") == 0 then
+        vim.notify("nvim_but_yaml: yq is not an executable command, ensure this is installed", vim.log.levels.ERROR)
+        return
+    end
+
     local config = read_config(config_file_path)
     if not config then return end
 
